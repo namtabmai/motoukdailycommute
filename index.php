@@ -23,7 +23,7 @@ $weather = json_decode($contents);
   </head>
 <body>
 <h1># Your Daily Commute - <?= date('d/m/Y'); ?></h1>
-<p><custom preamble, make fun of me if you see me post this></p>
+<p>&lt;custom preamble, make fun of me if you see me post this&gt;</p>
 <h2>### Forecast</h2>
 <?php foreach($weather->RegionalFcst->FcstPeriods->Period[0]->Paragraph AS $period): ?>
 <h3>#### <?= $period->title; ?></h3>
@@ -36,6 +36,6 @@ $weather = json_decode($contents);
 </ul>
 <h2>### Discord</h2>
 <p>Bored at work, or just taking a break from riding. Drop by the ["unofficial" discord server](https://discord.gg/01041pCFK93AeJTJZ)</p>
-<p><other fluff></p>
+<p>&lt;other fluff&gt;</p>
 </body>
 </html>
