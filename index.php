@@ -14,11 +14,7 @@ $londonLong = 51.30;
 $londonLat = 0.07;
 
 $contents = file_get_contents($URL);
-#$contents = file_get_contents("test.json");
 $weather = json_decode($contents);
-
-// stupid bloody php/json
-$textVar = '$';
 
 ?>
 <html>
