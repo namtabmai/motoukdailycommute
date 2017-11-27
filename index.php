@@ -35,7 +35,7 @@ $weather = json_decode($contents);
 <li>* Sun rise tomorrow <?= date_sunrise($now->getTimestamp() + (24 * 60 * 60), SUNFUNCS_RET_STRING, $londonLong, $londonLat, 90, $now->getOffset() / 3600); ?></li>
 </ul>
 <h2>### Discord</h2>
-<p>Bored at work, or just taking a break from riding. Drop by the ["unofficial" discord server](https://discord.gg/01041pCFK93AeJTJZ)</p>
+<p>Bored at work, or just taking a break from riding. Drop by the ["unofficial" discord server](https://discord.gg/k5D5uhH)</p>
 <p>&lt;other fluff&gt;</p>
 </body>
 </html>
