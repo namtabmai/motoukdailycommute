@@ -1,9 +1,10 @@
 <?php
 
-// Includes API_KEY definition
-require('config.php');
+require('motouk.php');
 
 header('Content-Type: text/html');
+
+$dailyCommute = new DailyCommute();
 
 date_default_timezone_set("Europe/London");
 $now = new DateTime('now', new DateTimeZone('Europe/London'));
@@ -19,23 +20,23 @@ $weather = json_decode($contents);
 ?>
 <html>
   <head>
-  <title>Your Daily Commute - <?= date('d/m/Y'); ?></title>
+  <title><?= $dailyCommute->getTitle(); ?></title>
   </head>
-<body>
-<h1># Your Daily Commute - <?= date('d/m/Y'); ?></h1>
-<p>&lt;custom preamble, make fun of me if you see me post this&gt;</p>
-<h2>### Forecast</h2>
-<?php foreach($weather->RegionalFcst->FcstPeriods->Period[0]->Paragraph AS $period): ?>
-<h3>#### <?= $period->title; ?></h3>
-<p><?php echo $period->{'$'}; ?></p>
-<?php endforeach; ?>
-<h2>### Sun times</h2>
-<ul style="list-style: none">
-<li>* Sun set <?= date_sunset($now->getTimestamp(), SUNFUNCS_RET_STRING, $londonLong, $londonLat, 90, $now->getOffset() / 3600); ?></li>
-<li>* Sun rise tomorrow <?= date_sunrise($now->getTimestamp() + (24 * 60 * 60), SUNFUNCS_RET_STRING, $londonLong, $londonLat, 90, $now->getOffset() / 3600); ?></li>
-</ul>
-<h2>### Discord</h2>
-<p>Bored at work, or just taking a break from riding. Drop by the ["unofficial" discord server](https://discord.gg/k5D5uhH)</p>
-<p>&lt;other fluff&gt;</p>
-</body>
+  <body>
+    <h1># <?= $dailyCommute->getTitle(); ?></h1>
+    <p>&lt;custom preamble, make fun of me if you see me post this&gt;</p>
+    <h2>### Forecast</h2>
+      <?php foreach($dailyCommute->getWeather() AS $period): ?>
+        <h3>#### <?= $period['title']; ?></h3>
+        <p><?php echo $period['content']; ?></p>
+      <?php endforeach; ?>
+    <h2>### Sun times</h2>
+    <ul style="list-style: none">
+      <li>* <?= $dailyCommute->getSunset(); ?></li>
+      <li>* <?= $dailyCommute->getSunrise(); ?></li>
+    </ul>
+    <h2>### Discord</h2>
+    <p><?= $dailyCommute->getDiscordLink(); ?></p>
+    <p>&lt;other fluff&gt;</p>
+  </body>
 </html>
