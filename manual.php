@@ -18,7 +18,7 @@ function checkCurrentDailyCommute($reddit)
   $today = new Datetime();
   $today->setTime(0, 0, 0);
 
-  $result = $reddit->search('daily commute', SUBREDDIT, null, 'day', null, 1);
+  $result = $reddit->search('daily commute', SUBREDDIT, null, 'day', null, 5);
 
   $posts = $result->data->children;
   foreach($posts AS $post)
