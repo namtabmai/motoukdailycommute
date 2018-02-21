@@ -67,7 +67,7 @@ EOT;
 {$dailyCommute->getDiscordLink()}
 
 ### Bot Information
-This has been an automatic post. If you have any question, suggestions or bugs please message /u/namtabmai
+This has been an automatic post. If you have any questions, suggestions or bugs please message /u/namtabmai
 
 If you'd like to do tomorrow's daily commute thread, you can find an automatically generated template [here](http://www.keyboardcowboy.co.uk/motoukdailycommute/),
 you just need to replace the bits between the <> brackets.
@@ -75,8 +75,6 @@ you just need to replace the bits between the <> brackets.
 EOT;
 
   $response = $reddit->submitTextPost(SUBREDDIT, $dailyCommute->getTitle(), $content, false);
-
-  var_dump($response);
 }
 
 $reddit = new Phapper(
