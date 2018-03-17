@@ -5,6 +5,7 @@ if ( php_sapi_name() != "cli" ) {
   exit();
 }
 
+require_once("holidays.php");
 require_once("motouk.php");
 require_once("Phapper/src/phapper.php");
 include_once("config.php");
@@ -85,7 +86,7 @@ $reddit = new Phapper(
   PhapperConfig::$user_agent
 );
 
-if (!checkCurrentDailyCommute($reddit))
+if (!is_holiday() && !checkCurrentDailyCommute($reddit))
 {
   postDailyCommute($reddit);
 }
