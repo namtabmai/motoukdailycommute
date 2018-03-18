@@ -1,7 +1,7 @@
 <?php
 
 // Includes API_KEY definition
-require('config.php');
+include_once('config.php');
 
 class DailyCommute
 {
@@ -22,6 +22,30 @@ class DailyCommute
 
     $contents = file_get_contents($this->URL);
     $this->weather = json_decode($contents);
+  }
+
+  function getFloof()
+  {
+    $data = file_get_contents("https://www.reddit.com/r/Floof/new/.json");
+    $json = JSON_decode($data);
+
+    $posts = array();
+    foreach($json->data->children AS $post)
+    {
+      if (!($post->data->is_self))
+      {
+        $posts[] = $post;
+      }
+    }
+
+    if (empty($posts))
+      return false;
+
+    $i = rand(0, count($posts));
+
+    $randomPost = $posts[$i];
+
+    return $randomPost->data->url;
   }
 
   function getTitle()

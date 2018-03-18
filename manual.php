@@ -67,6 +67,17 @@ EOT;
 ### Discord
 {$dailyCommute->getDiscordLink()}
 
+EOT;
+
+  $floof = $dailyCommute->getFloof();
+if ($floof)
+{
+  $content .= "\r\n### Floof\r\n";
+  $content .= $floof;
+  $content .= "\r\n\r\n";
+}
+
+$content .= <<<EOT
 ### Bot Information
 This has been an automatic post. If you have any questions, suggestions or bugs please message /u/namtabmai
 
