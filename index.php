@@ -17,8 +17,6 @@ $londonLat = 0.07;
 $contents = file_get_contents($URL);
 $weather = json_decode($contents);
 
-$floof = $dailyCommute->getFloof();
-
 ?>
 <html>
   <head>
@@ -39,9 +37,9 @@ $floof = $dailyCommute->getFloof();
     </ul>
     <h2>### Discord</h2>
     <p><?= $dailyCommute->getDiscordLink(); ?></p>
-    <?php if($floof): ?>
+    <h2>### Random bike of the day</h2>
+    <p><?= $dailyCommute->getBike(); ?></p>
     <h2>### Floof</h2>
-    <p><?= $floof; ?></p>
-    <?php endif; ?>
+    <p><?= $dailyCommute->getFloof(); ?></p>
   </body>
 </html>

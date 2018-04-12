@@ -24,9 +24,9 @@ class DailyCommute
     $this->weather = json_decode($contents);
   }
 
-  function getFloof()
+  function getRandomImage($multireddit)
   {
-    $data = file_get_contents("https://www.reddit.com/r/Floof/new/.json");
+    $data = file_get_contents("https://www.reddit.com/user/namtabmai/m/${multireddit}/.json");
     $json = JSON_decode($data);
 
     $posts = array();
@@ -46,6 +46,16 @@ class DailyCommute
     $randomPost = $posts[$i];
 
     return $randomPost->data->url;
+  }
+
+  function getBike()
+  {
+    return $this->getRandomImage("motoukbikepics");
+  }
+
+  function getFloof()
+  {
+    return $this->getRandomImage("motoukfloof");
   }
 
   function getTitle()
