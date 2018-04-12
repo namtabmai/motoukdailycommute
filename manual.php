@@ -69,7 +69,15 @@ EOT;
 
 EOT;
 
-  $floof = $dailyCommute->getFloof();
+$bike = $dailyCommute->getBike();
+if ($bike)
+{
+  $content .= "\r\n### Random bike pic\r\n";
+  $content .= $bike;
+  $content .= "\r\n\r\n";
+}
+
+$floof = $dailyCommute->getFloof();
 if ($floof)
 {
   $content .= "\r\n### Floof\r\n";

@@ -37,7 +37,7 @@ $weather = json_decode($contents);
     </ul>
     <h2>### Discord</h2>
     <p><?= $dailyCommute->getDiscordLink(); ?></p>
-    <h2>### Random bike of the day</h2>
+    <h2>### Random bike</h2>
     <p><?= $dailyCommute->getBike(); ?></p>
     <h2>### Floof</h2>
     <p><?= $dailyCommute->getFloof(); ?></p>
