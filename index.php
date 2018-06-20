@@ -41,5 +41,8 @@ $weather = json_decode($contents);
     <p><?= $dailyCommute->getBike(); ?></p>
     <h2>### Floof</h2>
     <p><?= $dailyCommute->getFloof(); ?></p>
+    <br/>
+    <p>If you have any questions, suggestions or bugs please message /u/namtabmai</p>
+    <p>If you'd like to do tomorrow's daily commute thread, you can find an automatically generated template [here](http://www.keyboardcowboy.co.uk/motoukdailycommute/),</p>
   </body>
 </html>
