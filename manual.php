@@ -10,7 +10,7 @@ require_once("motouk.php");
 require_once("Phapper/src/phapper.php");
 include_once("config.php");
 
-function checkCurrentDailyCommute($reddit)
+function currentDailyCommuteExists($reddit)
 {
   echo "Checking for current thread\r\n";
 
@@ -94,7 +94,11 @@ you just need to replace the bits between the <> brackets.
 
 EOT;
 
-  $response = $reddit->submitTextPost(SUBREDDIT, $dailyCommute->getTitle(), $content, false);
+  // check to make sure no one has already posted a thread
+  if (!currentDailyCommuteExists($reddit))
+  {
+    $response = $reddit->submitTextPost(SUBREDDIT, $dailyCommute->getTitle(), $content, false);
+  }
 }
 
 $reddit = new Phapper(
@@ -105,7 +109,8 @@ $reddit = new Phapper(
   PhapperConfig::$user_agent
 );
 
-if (!is_holiday() && !checkCurrentDailyCommute($reddit))
+// don't bother doing anything if it's a public holiday
+if (!is_holiday())
 {
   postDailyCommute($reddit);
 }
